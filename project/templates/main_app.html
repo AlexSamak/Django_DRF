@@ -8,6 +8,28 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
+
+{% verbatim %}	
+
+	<div class="container" id="orders_app">
+
+		<template v-for="order in orders">
+
+			<div class="btn btn-success btn-lg">
+				Amount: {{ order.amount }}
+				<br>
+				Description: {{ order.description }}
+			</div>
+			<br><br>
+
+		</template>
+
+		
+	</div>
+
+{% endverbatim %}		
 	
+<script src="/static/app.js"></script>
+
 </body>
 </html>
