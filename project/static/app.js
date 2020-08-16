@@ -17,19 +17,27 @@ new Vue({
 		},
 
 		addData() {
-			axios.post('/api/orders', {
-				name: 'good - good - good'
-			})
-			.then((responce) => {
-				console.log(responce);
-			})
-		}
+			const data = { uid: '148', amount: 111, email: 'email' };
+
+        const options = {
+            method: 'POST',
+            url: "http://localhost:8000/api/orders",
+            //data: JSON.stringify(data)
+        };
+        axios(options)
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+      }      
 	},
 
 	created: function() {
 		console.log('Created!');
 		this.fetchOrders();
-		this.addData();
+		//this.addData();
 
 	}
 
