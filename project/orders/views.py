@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from orders.models import SalesOrder
-from rest_framework.viewsets import ModelViewSet
+#from rest_framework.viewsets import ModelViewSet
+from rest_framework import viewsets
 from orders.serializers import OrderSerializer
 
 
@@ -8,7 +9,7 @@ def orders_page(request):
     return render(request, 'index.html', {'orders': SalesOrder.objects.all()})
 
 
-class OrderView(ModelViewSet):
+class OrderView(viewsets.ModelViewSet):
     queryset = SalesOrder.objects.all()
     serializer_class = OrderSerializer
 

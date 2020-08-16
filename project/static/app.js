@@ -17,21 +17,37 @@ new Vue({
 		},
 
 		addData() {
-			const data = { uid: '148', amount: 111, email: 'email' };
+			const deptsURL = "http://localhost:8000/api/orders/";
+			var vAttributes = {};
+			vAttributes = {
+				amount: 789, 
+				description: "XXXxxxxx"
+			};
+			// var username = 'admin';
+			// var password = '1234';
+			// var credentials = btoa(username + ':' + password);
+			// var basicAuth = 'Basic ' + credentials;
+			//console.log(basicAuth);
+			const ops = {
+				method: 'post',
+				headers: { 'content-type': 'application/json' },
+				//headers: { 'content-type': 'application/json', 'Authorization': + basicAuth },
+				data: JSON.stringify(vAttributes) ,
+				url: deptsURL
+			};
+			axios( ops).then((res) => {
+				console.log("post response: " + res);
+			}).catch(function (error) {
+				console.log("post error: " + error);
+			});
+			
+      },
 
-        const options = {
-            method: 'POST',
-            url: "http://localhost:8000/api/orders",
-            //data: JSON.stringify(data)
-        };
-        axios(options)
-            .then((response) => {
-                console.log(response.data)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-      }      
+      postpost(){
+      	console.log('POST-POST');
+      	this.addData();
+
+      }
 	},
 
 	created: function() {
